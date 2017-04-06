@@ -90,7 +90,7 @@ public class MorraApp {
     } while (playAgain);
 
     // At the end of all games, display a history of games played.
-    morraLogic.displayGameEndStats();
+    morraLogic.displayGameEndStats(human, cpu);
 
     // Close the scanner object.
     keyboardIn.close();

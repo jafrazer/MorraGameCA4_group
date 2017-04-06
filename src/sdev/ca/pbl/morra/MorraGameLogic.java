@@ -198,21 +198,30 @@ public class MorraGameLogic {
   }
 
   /**
-   * For each game, show:
+   * For each game, show: <br>
+   * - the number of rounds won and lost by the human player <br>
+   * - how many even and odd numbers have been chosen by each player <br>
+   * - the extra points received by the player per game <br>
    * 
-   * - the number of rounds won and lost by the human player
+   * @param human
+   *          The human player object.
+   * @param cpu
+   *          The CPU player object.
    * 
-   * - how many even and odd numbers have been chosen by each player
-   * 
-   * - the extra points received by the player per game
-   * 
-   * 
-   * @author
+   * @author johnfrazer - x16138015
    */
-  public void displayGameEndStats() {
+  public void displayGameEndStats(MorraPlayer human, MorraCPUPlayer cpu) {
 
-    // All the history elements of the game should be coded using Arrays.
-    // TODO
+    System.out.println("Thanks for playing!");
+
+    System.out.println("Player rounds won: " + human.getRoundsWonCount());
+    System.out.println("Player rounds lost: " + human.getRoundsLostCount());
+
+    System.out.println("Number of evens fingers: " + human.getEvenNumberCount());
+    System.out.println("Number of odd fingers: " + human.getOddNumberCount());
+
+    System.out.println("Bonus points won: " + human.getExtraPointsWon());
+
   }
 
 }

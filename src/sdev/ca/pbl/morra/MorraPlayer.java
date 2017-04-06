@@ -9,8 +9,18 @@ public class MorraPlayer {
   private boolean isOdds = true;
   private int fingers = 0;
   private int score = 0;
-  private int[] fingerHistory = new int[10];
-  private int roundsWon = 0;
+  private int[] fingerHistory = new int[1];
+
+  private int[] roundsWonLostCounters = new int[2];
+  private int wonConstant = 0;
+  private int lostConstant = 1;
+
+  private int[] evensOddsCounters = new int[2];
+  private int evenConstant = 0;
+  private int oddConstant = 1;
+
+  private int[] extraPointsCounter = new int[1];
+  private int extraPointsConstant = 0;
 
   /**
    * Default constructor for MorraPlayer.
@@ -122,16 +132,34 @@ public class MorraPlayer {
    * @author johnfrazer - x16138015
    */
   public void updateFingerHistory(int roundNumber) {
-    fingerHistory[roundNumber] = getFingers();
+    // TODO
+    // Create a new array to hold the fingers held out data.
+
+    // copy the existing data into the new (bigger) array.
+
+    // add the current fingers held out record to the new history.
+
+    // copy the new history to the class variable.
   }
 
   /**
    * Print the players finger history out in the format: X, Y, Z, etc,
    * 
-   * @author
+   * @author johnfrazer - x16138015
    */
   public void printFingerHistory() {
-    // TODO: print out the contents of the this.fingerHistory array.
+    for (int fingers : this.fingerHistory) {
+      System.out.print(fingers + ", ");
+    }
+  }
+
+  /**
+   * Print the players finger history out in the format: X, Y, Z, etc,
+   * 
+   * @author johnfrazer - x16138015
+   */
+  public void resetFingerHistory() {
+    this.fingerHistory = new int[1];
   }
 
   /**
@@ -139,8 +167,8 @@ public class MorraPlayer {
    * 
    * @author johnfrazer - x16138015
    */
-  public void wonRound() {
-    this.roundsWon++;
+  public void updateWonRoundCount() {
+    this.roundsWonLostCounters[wonConstant]++;
   }
 
   /**
@@ -151,6 +179,79 @@ public class MorraPlayer {
    * @author johnfrazer - x16138015
    */
   public int getRoundsWonCount() {
-    return this.roundsWon;
+    return this.roundsWonLostCounters[wonConstant];
+  }
+
+  /**
+   * Increase the player's number of rounds lost counter.
+   * 
+   * @author johnfrazer - x16138015
+   */
+  public void updateLostRoundCount() {
+    this.roundsWonLostCounters[lostConstant]++;
+  }
+
+  /**
+   * Read the number of rounds the player has lost.
+   * 
+   * @return The current number of rounds the player has lost in this game.
+   * 
+   * @author johnfrazer - x16138015
+   */
+  public int getRoundsLostCount() {
+    return this.roundsWonLostCounters[lostConstant];
+  }
+
+  /**
+   * Increment the running total of times the player has played an even number
+   * of fingers.
+   * 
+   * @author johnfrazer - x16138015
+   */
+  public void updateEvenNumberCount() {
+    this.evensOddsCounters[evenConstant]++;
+  }
+
+  /**
+   * Read the number of times the player played an even number of fingers.
+   * 
+   * @return Number of times a player played an even number of fingers
+   * 
+   * @author johnfrazer - x16138015
+   */
+  public int getEvenNumberCount() {
+    return this.evensOddsCounters[evenConstant];
+  }
+
+  /**
+   * Increment the running total of times the player has played an odd number of
+   * fingers.
+   * 
+   * @author johnfrazer - x16138015
+   */
+  public void updateOddNumberCount() {
+    this.evensOddsCounters[oddConstant]++;
+  }
+
+  /**
+   * Read the number of times the player played an odd number of fingers.
+   * 
+   * @return Number of times a player played an odd number of fingers
+   * 
+   * @author johnfrazer - x16138015
+   */
+  public int getOddNumberCount() {
+    return this.evensOddsCounters[oddConstant];
+  }
+
+  /**
+   * Read the total number of bonus points the player has won so far.
+   * 
+   * @return Bonus points total
+   * 
+   * @author johnfrazer - x16138015
+   */
+  public int getExtraPointsWon() {
+    return this.extraPointsCounter[extraPointsConstant];
   }
 }
