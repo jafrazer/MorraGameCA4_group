@@ -52,6 +52,12 @@ public class MorraPlayer {
    */
   public void setFingers(int fingers) {
     this.fingers = fingers;
+
+    if (fingers % 2 == 0) {
+      this.updateEvenNumberCount();
+    } else if (fingers % 2 == 1) {
+      this.updateOddNumberCount();
+    }
   }
 
   /**
@@ -69,7 +75,11 @@ public class MorraPlayer {
    * @author johnfrazer - x16138015
    */
   public void closerToTheSumBonusPointUpdate() {
+    // Increment the player score to award the bonus point.
     this.score++;
+
+    // Increment the record of bonus points won.
+    this.extraPointsCounter[extraPointsConstant]++;
   }
 
   /**
