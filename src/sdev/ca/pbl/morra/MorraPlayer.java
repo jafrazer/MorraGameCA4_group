@@ -24,8 +24,6 @@ public class MorraPlayer {
 
   /**
    * Default constructor for MorraPlayer.
-   * 
-   * @author johnfrazer - x16138015
    */
   public MorraPlayer() {
     // This constructor is intentionally empty.
@@ -34,7 +32,7 @@ public class MorraPlayer {
   /**
    * Read the player's number of "held out" fingers.
    * 
-   * @return
+   * @return Player's played fingers
    * 
    * @author johnfrazer - x16138015
    */
@@ -142,14 +140,19 @@ public class MorraPlayer {
    * @author johnfrazer - x16138015
    */
   public void updateFingerHistory(int roundNumber) {
-    // TODO
     // Create a new array to hold the fingers held out data.
+    int[] newFingerHistory = new int[roundNumber + 1];
 
     // copy the existing data into the new (bigger) array.
+    for (int i = 0; i < this.fingerHistory.length; i++) {
+      newFingerHistory[i] = this.fingerHistory[i];
+    }
 
     // add the current fingers held out record to the new history.
+    newFingerHistory[roundNumber] = getFingers();
 
     // copy the new history to the class variable.
+    this.fingerHistory = newFingerHistory;
   }
 
   /**

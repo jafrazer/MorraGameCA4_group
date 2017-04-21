@@ -9,8 +9,6 @@ public class MorraGameLogic {
 
   /**
    * Default constructor for MorraGameLogic.
-   * 
-   * @author johnfrazer - x16138015
    */
   public MorraGameLogic() {
     // This constructor is intentionally empty.
@@ -91,22 +89,50 @@ public class MorraGameLogic {
    * @param cpu
    *          The CPU player object.
    * 
-   * @author
+   * @author johnfrazer - x16138015
    */
   public void calculateScoreChanges(MorraPlayer human, MorraCPUPlayer cpu) {
 
     // Calculate who wins the points for being Odds or Evens.
+    int totalFingersShown = human.getFingers() + cpu.getFingers();
 
-    // NOTE: that you have the human and cpu objects here to use.
-
-    // TODO: write the code needed to to calculate the winner of the round, and
-    // award them their points. Also try to print out some information here so
-    // the player knows why the winner was the winner.
+    if (totalFingersShown % 2 == 0) {
+      // result is EVEN; evens player wins
+      if (!human.isPlayerOdds()) {
+        human.roundWinnerPointsUpdate();
+        human.updateWonRoundCount();
+        System.out.println("You win this round! (" + totalFingersShown + " is even)");
+      } else if (!cpu.isPlayerOdds()) {
+        cpu.roundWinnerPointsUpdate();
+        human.updateLostRoundCount();
+        System.out.println("CPU wins this round! (" + totalFingersShown + " is even)");
+      }
+    } else if (totalFingersShown % 2 == 1) {
+      // result is ODD; odds player wins
+      if (human.isPlayerOdds()) {
+        human.roundWinnerPointsUpdate();
+        human.updateWonRoundCount();
+        System.out.println("You win this round! (" + totalFingersShown + " is odd)");
+      } else if (cpu.isPlayerOdds()) {
+        cpu.roundWinnerPointsUpdate();
+        human.updateLostRoundCount();
+        System.out.println("CPU wins this round! (" + totalFingersShown + " is odd)");
+      }
+    }
 
     // Calculate who wins the bonus point for being closer to the total.
+    int playerFingersTotalDiff = totalFingersShown - human.getFingers();
+    int cpuFingersTotalDiff = totalFingersShown - cpu.getFingers();
 
-    // TODO: Award a bonus point to whichever player's number of fingers held
-    // out is closer to the total.
+    if (playerFingersTotalDiff < cpuFingersTotalDiff) {
+      human.closerToTheSumBonusPointUpdate();
+      System.out.println("Your guess (" + human.getFingers() + ") was closer to the total (" + totalFingersShown
+          + ") than CPU's guess (" + cpu.getFingers() + "), so you win the bonus point!");
+    } else {
+      cpu.closerToTheSumBonusPointUpdate();
+      System.out.println("CPU guess (" + cpu.getFingers() + ") was closer to the total (" + totalFingersShown
+          + ") than your guess (" + human.getFingers() + "), so CPU wins the bonus point!");
+    }
   }
 
   /**
