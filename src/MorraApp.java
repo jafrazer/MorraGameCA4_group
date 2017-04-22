@@ -1,5 +1,3 @@
-package sdev.ca.pbl.morra;
-
 import java.util.Scanner;
 
 /**

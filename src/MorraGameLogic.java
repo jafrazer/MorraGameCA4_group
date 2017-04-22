@@ -1,5 +1,3 @@
-package sdev.ca.pbl.morra;
-
 import java.util.Scanner;
 
 /**
@@ -178,7 +176,6 @@ public class MorraGameLogic {
     // The winner of the game is the ﬁrst player who accumulates six points.
 
     // TODO: display a message to show who won the game
-    // NOTE: you have a Scanner object called keyboardIn to work with.
   }
 
   /**

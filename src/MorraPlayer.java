@@ -1,5 +1,3 @@
-package sdev.ca.pbl.morra;
-
 /**
  * This is the default Morra Player class.
  * 
