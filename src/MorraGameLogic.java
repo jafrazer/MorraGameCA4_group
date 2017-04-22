@@ -14,48 +14,6 @@ public class MorraGameLogic {
     // This constructor is intentionally empty.
   }
 
-//  /**
-//   * This method is for the player to select their player type, Odds or Evens.
-//   * 
-//   * @param keyboardIn
-//   *          The scanner object for accepting user input.
-//   * 
-//   * @return Player has selected odds indicator.
-//   * 
-//   * @author johnfrazer - x16138015
-//   */
-//  public boolean humanPlayerTypeSelectionMenu(Scanner keyboardIn) {
-//    boolean selectedOdds = true;
-//    boolean loopCondition = true;
-//
-//    do {
-//      System.out.print("Select if you are: \n\t1. Odds \n\t2. Evens\nChoose: ");
-//      int playerTypeChoice = keyboardIn.nextInt();
-//
-//      switch (playerTypeChoice) {
-//      case 1:
-//        // Player has selected Odds
-//        selectedOdds = true;
-//        // exit the loop
-//        loopCondition = false;
-//        break;
-//      case 2:
-//        // Player has selected Evens
-//        selectedOdds = false;
-//        // exit the loop
-//        loopCondition = false;
-//        break;
-//      default:
-//        // Error: user input something other than 1 or 2.
-//        System.out.println("Invalid selection. Try again.\n");
-//        break;
-//      }
-//
-//    } while (loopCondition);
-//
-//    return selectedOdds;
-//  }
-
   /**
    * This method is for the player to select their player type, Odds or Evens.
    *
@@ -86,6 +44,41 @@ public class MorraGameLogic {
 
     return selectedOdds;
   }
+///**
+//  * Alternate version by: 
+//  * @author johnfrazer - x16138015
+//  */
+//public boolean humanPlayerTypeSelectionMenu(Scanner keyboardIn) {
+// boolean selectedOdds = true;
+// boolean loopCondition = true;
+//
+// do {
+//   System.out.print("Select if you are: \n\t1. Odds \n\t2. Evens\nChoose: ");
+//   int playerTypeChoice = keyboardIn.nextInt();
+//
+//   switch (playerTypeChoice) {
+//   case 1:
+//     // Player has selected Odds
+//     selectedOdds = true;
+//     // exit the loop
+//     loopCondition = false;
+//     break;
+//   case 2:
+//     // Player has selected Evens
+//     selectedOdds = false;
+//     // exit the loop
+//     loopCondition = false;
+//     break;
+//   default:
+//     // Error: user input something other than 1 or 2.
+//     System.out.println("Invalid selection. Try again.\n");
+//     break;
+//   }
+//
+// } while (loopCondition);
+//
+// return selectedOdds;
+//}
 
   /**
    * In this method, the player and cpu users are set as Odds or Evens, based on
@@ -114,27 +107,6 @@ public class MorraGameLogic {
       cpu.setAsOdds();
     }
   }
-
-//  /**
-//   * This method gets the number of fingers the player wants to "hold out".
-//   * 
-//   * @param keyboardIn
-//   *          The scanner object for accepting user input.
-//   * 
-//   * @return The number of fingers "held out".
-//   * 
-//   * @author johnfrazer - x16138015
-//   */
-//  public int getPlayerFingersHeldOut(Scanner keyboardIn) {
-//    int playerFingers = 0;
-//
-//    do {
-//      System.out.print("Enter your Morra Fingers Guess (1-10): ");
-//      playerFingers = keyboardIn.nextInt();
-//    } while (playerFingers < 0 || playerFingers > 11);
-//
-//    return playerFingers;
-//  }
   
   /**
    * This method gets the number of fingers the player wants to "hold out".
@@ -156,6 +128,20 @@ public class MorraGameLogic {
 
     return playerFingers;
   }
+///**
+// * Alternate version by: 
+// * @author johnfrazer - x16138015
+// */
+//public int getPlayerFingersHeldOut(Scanner keyboardIn) {
+//  int playerFingers = 0;
+//
+//  do {
+//    System.out.print("Enter your Morra Fingers Guess (1-10): ");
+//    playerFingers = keyboardIn.nextInt();
+//  } while (playerFingers < 0 || playerFingers > 11);
+//
+//  return playerFingers;
+//}
 
   /**
    * This method calculates updates to the players scores in a game round,
@@ -219,24 +205,8 @@ public class MorraGameLogic {
           + ") than your guess (" + human.getFingers() + "), so CPU wins the bonus point!");
     }
   }
-  
 //  /**
-//   * This method calculates updates to the players scores in a game round,
-//   * displays which player has won, and some information on why.
-//   *
-//   * The winner of the round is decided based on the sum of fingers shown by both
-//   * players, namely if the sum is an even number then the Evens player wins,
-//   * otherwise if the sum is an odd number then the Odds player wins. The
-//   * winner of the round receives two points.
-//   *
-//   * In addition, the player whose number of fingers is closer to the sum,
-//   * receives one extra point.
-//   *
-//   * @param human
-//   *          The human player object.
-//   * @param cpu
-//   *          The CPU player object.
-//   *
+//   * Alternate version by: 
 //   * @author Marcos Figueira - x16135041
 //   */
 //  public void calculateScoreChanges(MorraPlayer human, MorraCPUPlayer cpu) {
@@ -347,14 +317,8 @@ public class MorraGameLogic {
       System.out.println("Game tied, " + humanScore + "-" + cpuScore + ".");
     }
   }
-  
 //  /**
-//   * This method compares the player's score to the cpu player's score, and
-//   * displays the game winner.
-//   *
-//   * @param humanScore
-//   * @param cpuScore
-//   *
+//   * Alternate version by: 
 //   * @author Marcos Figueira - x16135041
 //   */
 //  private void displayGameWinner(int humanScore, int cpuScore) {
@@ -434,22 +398,13 @@ public class MorraGameLogic {
 
     return playAgain;
   }
-  
 //  /**
-//   * Ask the user if they would like to play another game.
-//   *
-//   * @param keyboardIn
-//   *          The scanner object for accepting user input.
-//   *
-//   * @return Player decision to play another game.
-//   *
+//   * Alternate version by: 
 //   * @author Marcos Figueira - x16135041
 //   */
 //  public boolean playAnotherGame(Scanner keyboardIn) {
 //    boolean playAgain = false;
 //    boolean playAgainLoopCondition = false;
-//
-//    // TODO: Ask the player if they would like to play again.
 //
 //  char selection;
 //
