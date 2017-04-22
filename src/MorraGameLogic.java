@@ -26,6 +26,8 @@ public class MorraGameLogic {
    */
   public boolean humanPlayerTypeSelectionMenu(Scanner keyboardIn) {
     boolean selectedOdds = true;
+
+    keyboardIn = new Scanner(System.in);
     int selection = 0;
 
     do{
@@ -38,9 +40,7 @@ public class MorraGameLogic {
     if (selection == 1){
       selectedOdds = true;
     }
-    else {
-      selectedOdds = false;
-    }
+    else selectedOdds = false;
 
     return selectedOdds;
   }
@@ -78,6 +78,32 @@ public class MorraGameLogic {
 // } while (loopCondition);
 //
 // return selectedOdds;
+//}
+
+///**
+//  * Alternate version by: 
+//  * @author ben
+//  */
+//public boolean humanPlayerTypeSelectionMenu(Scanner keyboardIn) {
+// boolean choiceOdds = true;
+// boolean loopCondition = true;
+//  int choice = 0;
+//  do
+//  {
+//    System.out.println("Do you choose Odds or Even? Please select");
+//    System.out.println("1. Odds");
+//    System.out.println("2. Even");
+//    choice = keyboardIn.nextInt();
+//  } while (choice !=1 && choice !=2);
+//
+//  if (choice ==1)
+//  {
+//    choiceOdds = true;
+//  }
+//   else choiceOdds = false;
+//
+//  return choiceOdds; 
+//
 //}
 
   /**
@@ -121,10 +147,12 @@ public class MorraGameLogic {
   public int getPlayerFingersHeldOut(Scanner keyboardIn) {
     int playerFingers = 0;
 
+    keyboardIn = new Scanner(System.in);
+
     do {
       System.out.println("How many fingers would you like to play?");
       playerFingers = keyboardIn.nextInt();
-    } while (playerFingers < 0 || playerFingers > 11);
+    } while (playerFingers < 0 || playerFingers > 10);
 
     return playerFingers;
   }
@@ -142,14 +170,28 @@ public class MorraGameLogic {
 //
 //  return playerFingers;
 //}
+  
+///**
+//  * Alternate version by: 
+//  * @author ben
+//  */
+//public int getPlayerFingersHeldOut(Scanner keyboardIn) {
+//int playerFingers = 0;
+//  do {
+//    System.out.println("How many fingers would you like to display?");
+//    playerFingers = keyboardIn.nextInt();
+//  } while (playerFingers < 0 || playerFingers > 10);
+//
+//    return playerFingers;
+//  }  
 
   /**
    * This method calculates updates to the players scores in a game round,
    * displays which player has won, and some information on why.
    * 
-   * The winner of the round is decided based on the sum of ﬁngers shown by both
-   * players, namely if the sum is an even number then the “Evens” player wins,
-   * otherwise if the sum is an odd number then the “Odds” player wins. The
+   * The winner of the round is decided based on the sum of fingers shown by both
+   * players, namely if the sum is an even number then the 'Evens' player wins,
+   * otherwise if the sum is an odd number then the 'Odds' player wins. The
    * winner of the round receives two points.
    * 
    * In addition, the player whose number of fingers is closer to the sum,
@@ -205,6 +247,7 @@ public class MorraGameLogic {
           + ") than your guess (" + human.getFingers() + "), so CPU wins the bonus point!");
     }
   }
+  
 //  /**
 //   * Alternate version by: 
 //   * @author Marcos Figueira - x16135041
@@ -259,6 +302,70 @@ public class MorraGameLogic {
 //     System.out.println("Both players win Bonus points (Both guesses are closer to the total fingers played - " + totalPlayed + ").");
 //   }
 //  }
+  
+///**
+//* Alternate version by: 
+//* @author ben
+//*/
+//public void calculateScoreChanges(MorraPlayer human, MorraCPUPlayer cpu) {
+//  int totalFingersPlayed = human.getFingers() + cpu.getFingers();
+//
+//        //We divide by 2 the numbers of fingers and if the modulus is equal to 0 we know that it is not an odds number.
+//        // Then we had the bonus point by updating the score
+//        if (totalFingersPlayed  % 2 == 0){
+//
+//        if (human.isPlayerOdds() == false){
+//          human.roundWinnerPointsUpdate();
+//        }
+//        else {
+//          //CPU player won the bounus point so we had it to his score 
+//          cpu.roundWinnerPointsUpdate();
+//        }
+//      }
+//      else{
+//        if (human.isPlayerOdds() == true){
+//          // human player won the bounus point so we had it to his score 
+//          human.roundWinnerPointsUpdate();
+//        }
+//        else {
+//          cpu.roundWinnerPointsUpdate();
+//        }
+//      }
+//
+//      if (human.score > cpu.score){
+//        human.updateWonRoundCount();
+//        cpu.updateLostRoundCount();
+//        System.out.println("Player wins this round:");
+//        System.out.println("Player displayed: " + human.getFingers());
+//        System.out.println("CPU displayed: " + cpu.getFingers());
+//        System.out.println("Player score: " + human.score);
+//        System.out.println("CPU score: " + cpu.score);
+//
+//      }
+//      else{
+//        cpu.updateWonRoundCount();
+//        human.updateLostRoundCount();
+//        System.out.println("CPU wins this round:");
+//        System.out.println("Player displayed: " + human.getFingers());
+//        System.out.println("CPU displayed: " + cpu.getFingers());
+//        System.out.println("Player score: " + human.score);
+//        System.out.println("CPU score: " + cpu.score);  
+//        
+//// Calculate who wins the points for being Odds or Evens.
+// 
+//// Calculate who wins the bonus point for being closer to the total.
+//  if (totalPlayed - human.getFingers()) <( totalPlayed - cpu.getFingers())
+//  {
+//     human.closerToTheSumBonusPointUpdate();
+//   }
+//   else if (totalPlayed - human.getFingers()) > (totalPlayed - cpu.getFingers()){
+//     cpu.closerToTheSumBonusPointUpdate();
+//   }
+//   else{
+//     human.closerToTheSumBonusPointUpdate();
+//     cpu.closerToTheSumBonusPointUpdate();
+//   }  
+// }
 
   /**
    * Store the player "fingers held out" information into the player object.
@@ -305,7 +412,7 @@ public class MorraGameLogic {
    * @author johnfrazer - x16138015
    */
   private void displayGameWinner(int humanScore, int cpuScore) {
-    // The winner of the game is the ﬁrst player who accumulates six points.
+    // The winner of the game is the first player who accumulates six points.
     if (humanScore > cpuScore) {
       // player wins
       System.out.println("Player wins " + humanScore + "-" + cpuScore + "!!!");
@@ -317,15 +424,13 @@ public class MorraGameLogic {
       System.out.println("Game tied, " + humanScore + "-" + cpuScore + ".");
     }
   }
+  
 //  /**
 //   * Alternate version by: 
 //   * @author Marcos Figueira - x16135041
 //   */
 //  private void displayGameWinner(int humanScore, int cpuScore) {
 //    // The winner of the game is the firrst player who accumulates six points.
-//
-//    // TODO: display a message to show who won the game
-//    // NOTE: you have a Scanner object called keyboardIn to work with.
 //
 //    if (humanScore >= 6 || cpuScore >= 6){
 //
@@ -342,7 +447,7 @@ public class MorraGameLogic {
 //  }
 
   /**
-   * Display the numbers of ﬁngers shown by both the user and the computer per
+   * Display the numbers of fingers shown by both the user and the computer per
    * round.
    * 
    * @param human
@@ -398,6 +503,7 @@ public class MorraGameLogic {
 
     return playAgain;
   }
+  
 //  /**
 //   * Alternate version by: 
 //   * @author Marcos Figueira - x16135041

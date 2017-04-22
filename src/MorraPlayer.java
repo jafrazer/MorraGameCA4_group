@@ -8,7 +8,8 @@ public class MorraPlayer {
   private int fingers = 0;
   private int score = 0;
   private int[] fingerHistory = new int[1];
-
+  
+  // Game stats/history stored using arrays, as per project spec.
   private int[] roundsWonLostCounters = new int[2];
   private int wonConstant = 0;
   private int lostConstant = 1;
