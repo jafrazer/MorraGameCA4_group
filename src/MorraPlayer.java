@@ -152,6 +152,29 @@ public class MorraPlayer {
     // copy the new history to the class variable.
     this.fingerHistory = newFingerHistory;
   }
+  
+//  /**
+//   * Add the current player fingers value to the round fingers history array.
+//   *
+//   * @param roundNumber
+//   *          The current game round (as this is used for an array, counting
+//   *          should start at 0)
+//   *
+//   * @author Marcos Figueira - x16135041
+//   */
+//  public void updateFingerHistory(int roundNumber) {
+//    int[] playerFingers = new int[roundNumber + 1];
+//
+//    // copy the existing data into the new (bigger) array.
+//    for (int i = 0; i < fingerHistory.length; i++){
+//      playerFingers[i] = fingerHistory[i];
+//    }
+//    // add the current fingers held out record to the new history.
+//    playerFingers[roundNumber] = getFingers();
+//    
+//    // copy the new history to the class variable.
+//    fingerHistory = playerFingers;
+//  }
 
   /**
    * Print the players finger history out in the format: X, Y, Z, etc,

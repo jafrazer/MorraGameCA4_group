@@ -27,4 +27,17 @@ public class MorraCPUPlayer extends MorraPlayer {
   public void setFingers() {
     super.setFingers(ThreadLocalRandom.current().nextInt(1, 10 + 1));
   }
+  
+//  /**
+//   * This method uses Java ThreadLocalRandom to select a pseudo-random number
+//   * between 1 and 10 (inclusively) for the CPU controlled player.
+//   *
+//   * @author Marcos Figueira - x16135041
+//   */
+//  public void setFingers() {
+//    Random cpuRandNum = new Random();
+//    int randomFingers = cpuRandNum.nextInt(9) + 1;
+//
+//    super.setFingers(randomFingers);
+//  }
 }
